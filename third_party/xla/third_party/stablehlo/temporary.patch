@@ -1,16 +1,15 @@
-diff --ruN a/stablehlo/docs/spec.md b/stablehlo/docs/spec.md
---- stablehlo/docs/spec.md
-+++ stablehlo/docs/spec.md
-@@ -5593,8 +5593,7 @@
- #### Constraints
+diff --ruN a/stablehlo/examples/c++/ExampleAdd.cpp b/stablehlo/examples/c++/ExampleAdd.cpp
+--- stablehlo/examples/c++/ExampleAdd.cpp
++++ stablehlo/examples/c++/ExampleAdd.cpp
+@@ -49,7 +49,7 @@
+   /** create function **/
+   // create function argument and result types.
+   auto tensorType =
+-      mlir::RankedTensorType::get({3, 4}, mlir::FloatType::getF32(&context));
++      mlir::RankedTensorType::get({3, 4}, mlir::Float32Type::get(&context));
+   auto func_type =
+       mlir::FunctionType::get(&context, {tensorType, tensorType}, {tensorType});
  
- * (C1) `same(shape(inputs...))`.
--* (C2) `rank(inputs[0]) = size(update_window_dims) + size(inserted_window_dims)
--       + size(input_batching_dims)`.
-+* (C2) `rank(inputs[0]) = size(update_window_dims) + size(inserted_window_dims) + size(input_batching_dims)`.
- * (C3) `same(shape(updates...))`.
- * (C4) `shape(updates[0]) = combine(update_scatter_dim_sizes,
-        update_window_dim_sizes)` where:
 diff --ruN a/stablehlo/stablehlo/conversions/tosa/tests/nullary.mlir b/stablehlo/stablehlo/conversions/tosa/tests/nullary.mlir
 --- stablehlo/stablehlo/conversions/tosa/tests/nullary.mlir
 +++ stablehlo/stablehlo/conversions/tosa/tests/nullary.mlir
